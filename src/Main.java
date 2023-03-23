@@ -8,15 +8,64 @@ public class Main {
 
     public static void main(String[] args) {
         // Create a scanner object
+import java.util.Scanner;
+
+        public class Example {
+            public static void main(String[] args) {
+                Scanner main = new Scanner(System.in);
+            }
+        }
 
         // Write a loop that will ask the user to enter a file path to gather stats on,
         // and continue until "Q" is entered.
+import java.util.Scanner;
+
+        public class Example {
+            public static void main(String[] args) {
+                Scanner main = new Scanner(System.in);
+                String filePath = "";
+                while (!filePath.equalsIgnoreCase("Q")) {
+                    System.out.println("Enter a file path to gather stats on (or enter Q to quit): ");
+                    filePath = main.nextLine();
+
+                }
+                main.close();
+            }
+        }
 
             // Reference Java-Assignment-003 to see how to use the java.nio libraries to turn a String path into a File
+        public class Example {
+            public static void main(String[] args) {
+                String fileName = "output.txt";
+                try {
+                    Path filePath = Paths.get(fileName);
+                    File.write(filePath, bytes);
+                    System.out.println("File successfully written: " + fileName);
+                }
+                    System.err.println("Error writing to file: " + .getMessage());
+
+            }
+        }
 
             // Ask the user if they would like to skip whitespace
 
+
             // Create a variable called skipWs that stores the user's response as a boolean
+import java.util.Scanner;
+
+        public class Example {
+            public static void main(String[] args) {
+                Scanner scanner = new Scanner(System.in);
+                boolean skipWs = false;
+                System.out.println("Do you want to skip whitespace? (y/n)");
+                String response = scanner.nextLine();
+                if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("yes")) {
+                    skipWs = true;
+                }
+                // use the skipWs variable here
+                scanner.close();
+            }
+        }
 
             /*
              * Within this try/catch block, which is used to handle possible errors thrown by the code in the try block,
@@ -24,15 +73,50 @@ public class Main {
              */
             try {
                 // You will need to create a FileStats object by passing it the File object and your skipWs variable as args
+import java.io.File;
+
+                public class Example {
+                    public static void main(String[] args) {
+                        File file = new File(filePath);
+                        boolean skipWs = true;
+
+                        FileStats stats = new FileStats(file, skipWs);
+
+                    }
+                }
 
                 // You will need to call the fs.read method, which you need to implement!
 
                 /*
                  * You will access the FileStats object's getter methods to get the file's line, word, character count and
                  * the files name. You should use a format specifier to print it all out similar to the following example:
-                 *
+                 *import java.io.File;
+                 import java.io.File;
+
+
+}
+
                  * Stats: lines - 6, words - 46, chars - 237 /path/to/file/fileName.txt
                  */
+           import java.io.File;
+
+                public class Example {
+                    public static void main(String[] args) {
+                        // assume the file path is stored in a string variable named "filePath"
+                        File file = new File(filePath);
+                        boolean skipWs = true; // assume the user wants to skip whitespace
+
+                        FileStats stats = new FileStats(file, skipWs);
+                        String filename = stats.getFileName();
+                        int lineCount = stats.getLineCount();
+                        int wordCount = stats.getWordCount();
+                        int charCount = stats.getCharCount();
+
+                        System.out.printf("File name: %s\nLine count: %d\nWord count: %d\nCharacter count: %d\n",
+                                filename, lineCount, wordCount, charCount);
+                    }
+                }
+
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
